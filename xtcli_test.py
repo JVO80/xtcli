@@ -13,13 +13,13 @@ class xtclTestCase(unittest2.TestCase):
 
 	def testServerName(self):
 		""" check that an empty server parameter generate an exception """
-		self.assertRaises(Exception, self.xtcCnx.XTCAuthenticateClient , "", login="admin", password="")
-		#try:
-		#	self.xtcCnx.XTCAuthenticateClient("",login="admin",password="")
-		#except Exception:
-                #	pass
-	        #else:
-        	#        print("expected an Exception for empty server")
+		#self.assertRaises(Exception, self.xtcCnx.XTCAuthenticateClient , "", login="admin", password="")
+		try:
+			self.xtcCnx.XTCAuthenticateClient("",login="admin",password="")
+		except Exception:
+                	pass
+	        else:
+        	        print("expected an Exception for empty server")
 
 	def testServerLogin(self):
 		""" check that an empty login generate an exception """
