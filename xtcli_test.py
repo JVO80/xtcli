@@ -1,7 +1,9 @@
-from xtcl import *
-import unittest
+from xtcli import *
+#import unittest
+import unittest2
+import xmlrunner
 
-class xtclTestCase(unittest.TestCase):
+class xtclTestCase(unittest2.TestCase):
 
 	def setUp(self):
 		self.xtcCnx = XTCConnector()
@@ -29,4 +31,4 @@ class xtclTestCase(unittest.TestCase):
                         print("expected an Exception for empty login")
 
 if __name__ == "__main__":
-	unittest.main()	
+	unittest2.main(testRunner=xmlrunner.XMLTestRunner(output='test-reports'))	
