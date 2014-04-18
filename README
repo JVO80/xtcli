@@ -1,1 +1,34 @@
-Hello World !
+1 - Installation                
+
+Start installation with:
+
+python setup.py install
+
+
+2 - Usage
+
+- On TAS Web Server, create a new user with access "CLI"
+
+- Create a python programm like the following and set :
+
+	* server : IP or FQDN of tas server
+	* login : the login of the user previously created
+	* password : the password of the user previously created
+
+#!/usr/bin/env python
+#-*- coding: utf-8 -*-
+
+from xtcpyrc.xtcpyrc import *
+import sys
+
+def main():
+        myxtcli = SrvConnector(server="myxtc.net",login="mylogin",password="",port=8080, path="/")
+        ret = myxtcli.scheduleTest("/Samples/Tests_Unit/01_Initial_test","tux")
+        print ret
+
+if __name__ == "__main__":
+        sys.exit(main())
+
+- Start your python progamm it will start the Test "/Samples/Tests_Unit/01_Initial_test"
+
+
