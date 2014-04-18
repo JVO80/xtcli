@@ -111,7 +111,7 @@ class SrvConnector:
         		commpressed = zlib.compress(jsoned)
 			xml_rpc_data = xmlrpclib.Binary(commpressed)
 			fromCli = xmlrpclib.Boolean(True)
-			response = self.srv.scheduleTest( self.login, self.hash_pass, xml_rpc_data, fromCli ) 
+			response = self.srv.scheduleTest( self.login, self.hash_pass, xml_rpc_data, fromCli )
 			methode, responseCode, responseData = response
 			
 			""" For scheduleTest, authenticateClient method is returned if an authentication error occurs"""

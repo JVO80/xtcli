@@ -14,14 +14,25 @@
 import sys
 from distutils.core import setup
 
+NAME = "xtcpyrc"
+DESCRIPTION = "XTC PYthon Remote Controller : Allows to start tests from a python software"
+AUTHOR = "Jean-Vianney OBLIN"
+EMAIL = "contact@extensivetesting.org"
+URL = "http://www.extensivetesting.org"
 
-setup(name='xtcpyrc',
-      version='1.0',
-      description='XTC PYthon Remote Controller : Allows to start tests from a python software',
-      author='Jean-Vianney OBLIN',
-      author_email='contact@extensivetesting.org',
-      packages = ['xtcpyrc'],
-      scripts = ["setup.py"],
-      url = 'http://www.extensivetesting.org',
-      license = ["LGPL"],
+def main():
+
+	setup(name = NAME,
+	      version='1.0',
+      	      description = DESCRIPTION,
+              author = AUTHOR,
+              author_email = EMAIL ,
+              packages = ['xtcpyrc'],
+              scripts = ["setup.py"],
+              url = URL,
+              license = ["LGPL"],
       ) 	
+
+if __name__ == "__main__":
+	sys.exit(main())
+	

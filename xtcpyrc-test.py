@@ -17,8 +17,12 @@ class xtclTestCase(unittest2.TestCase):
 		self.badserver = "tas.toto.titi"
 		self.badport = 1719
 		self.path = "/Samples/Tests_Unit/01_Initial_test"
+		self.suitePath = "/Samples/Tests_Suite/Tests_Agents/02_ARP"
+		self.planPath = "/Samples/Tests_Plan/0_All tests framework"
 		self.invalidPath = "/titi/toto"
 		self.ext = "tux"
+		self.extSuite = "tsx"
+		self.extPlan = "tpx"
 		self.invalidExt = "titi"
 		
 
@@ -27,10 +31,19 @@ class xtclTestCase(unittest2.TestCase):
 
 	""" Nominal """
 	def testUnitNominal(self):
-		""" Check nominal behaviour """
+		""" Check nominal behaviour with a test unit """
 		srv = SrvConnector(self.server, self.login, self.password, port=8080, path="/")
 		self.assertEqual(srv.scheduleTest( self.path, self.ext ), "SUCCESS")
 
+	def testSuiteNominal(self):
+                """ Check nominal behaviour with a test suite """
+                srv = SrvConnector(self.server, self.login, self.password, port=8080, path="/")
+                self.assertEqual(srv.scheduleTest( self.suitePath, self.extSuite ), "SUCCESS")
+	
+	def testPlanNominal(self):
+                """ Check nominal behaviour with a test plan """
+                srv = SrvConnector(self.server, self.login, self.password, port=8080, path="/")
+                self.assertEqual(srv.scheduleTest( self.planPath, self.extPlan ), "SUCCESS")
 	
 
 	""" Tests for __init__() """
@@ -90,6 +103,11 @@ class xtclTestCase(unittest2.TestCase):
                 srv = SrvConnector(self.server, self.login, self.password, port=8080, path="/")
                 self.assertEqual(srv.scheduleTest( self.path, self.invalidExt ), "FAILED")	
 		
+
+	def testMixedPlanAndSuite(self):
+		""" check that a valid path for a plan but with a suite extension generate an error """
+		srv = SrvConnector(self.server, self.login, self.password, port=8080, path="/")
+		self.assertEqual(srv.scheduleTest( self.planPath, self.extSuite ), "FAILED")
 	
 
 if __name__ == "__main__":

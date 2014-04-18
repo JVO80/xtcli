@@ -15,8 +15,13 @@ import sys
 
 def main():
 	myxtcli = SrvConnector(server="tas.dmachard.net",login="jvotestcli",password="",port=8080, path="/")
-	ret = myxtcli.scheduleTest("/Samples/Tests_Unit/01_Initial_test","tux")
-	print ret
+	ret = myxtcli.scheduleTest("/Samples/Tests_Suite/Tests_Agents/02_ARP","tsx")
+	if ret == "SUCCESS":
+		print "Test scheduled"
+		return 0
+	else:
+		print "Test not scheduled"
+		return 1
 
 if __name__ == "__main__":
 	sys.exit(main())
